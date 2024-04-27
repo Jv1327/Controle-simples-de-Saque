@@ -8,14 +8,26 @@ public class ControleSimplesDeSaques {
         double limiteDiario = scanner.nextDouble();
         double limiteRestante = limiteDiario;
 
-        double saque = scanner.nextDouble();
+        while (true) {
+            double saque = scanner.nextDouble();
 
-        if (saque > limiteRestante) {
-            System.out.println("Limite diario de saque atingido. Transacoes encerradas.");
-        } else {
+            if (saque == 0) {
+                System.out.println("Transacoes encerradas.");
+                break;
+            }
+
+            if (saque > limiteDiario) {
+                System.out.println("Limite diario de saque atingido. Transacoes encerradas.");
+                break;
+            }
+
+            if (saque > limiteRestante) {
+                System.out.println("Limite diario de saque atingido. Transacoes encerradas.");
+                break;
+            }
+
             limiteRestante -= saque;
             System.out.printf("Saque realizado. Limite restante: %.1f%n", limiteRestante);
-            System.out.println("Transacoes encerradas.");
         }
 
         scanner.close(); 
